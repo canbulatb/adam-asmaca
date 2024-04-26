@@ -23,10 +23,6 @@ const Game = () => {
     }
   };
 
-  const cijferPlus=()=>{
-    setCijfer((cijfer + 7-wrongGuessCount)*10)
-
-  }
   // Oyunun sonucunu belirleme
   const gameResult = ()  => {
     toplam=0;
