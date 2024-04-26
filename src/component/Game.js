@@ -19,7 +19,7 @@ const Game = () => {
     setGuessedLetters([...guessedLetters, letter]);
     // Yanlış tahminse yanlış tahmin sayısını artırır
     if (!selectedWord[0,0].includes(letter)) {
-      if(selectedWord[0,0!=="son"]){setWrongGuessCount(wrongGuessCount + 1);}
+      if(selectedWord[0,0]!=="son"){setWrongGuessCount(wrongGuessCount + 1);}
     }
   };
 
