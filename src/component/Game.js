@@ -19,7 +19,8 @@ const Game = () => {
     setGuessedLetters([...guessedLetters, letter]);
     // Yanlış tahminse yanlış tahmin sayısını artırır
     if (!selectedWord[0,0].includes(letter)) {
-      if(selectedWord[0,0]!=="son"){setWrongGuessCount(wrongGuessCount + 1);}
+      if(selectedWord[0,0]!=="son" && wrongGuessCount<6){setWrongGuessCount(wrongGuessCount + 1);}else{}
+      console.log(wrongGuessCount);
     }
   };
 
@@ -93,7 +94,7 @@ useEffect(() => {
     <div className="game">
       <h1>{selectedWord[0,1]}</h1>
       <img src={`./img/${wrongGuessCount}.jpg`} />
-      <Word selectedWord={selectedWord[0,0]} guessedLetters={guessedLetters} />
+      <Word selectedWord={selectedWord[0,0]} guessedLetters={guessedLetters} wrongGuessCount={wrongGuessCount} />
       <Alphabet guessedLetters={guessedLetters} selectLetter={selectLetter} />
       <div className="result">{gameResult()}</div>
       <button onClick={previus}>previus</button>
