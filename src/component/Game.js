@@ -19,7 +19,7 @@ const Game = () => {
     setGuessedLetters([...guessedLetters, letter]);
     // Yanlış tahminse yanlış tahmin sayısını artırır
     if (!selectedWord[0,0].includes(letter)) {
-      if(selectedWord[0,0]!=="son" && wrongGuessCount<6){setWrongGuessCount(wrongGuessCount + 1);}else{}
+      if(selectedWord[0,0]!=="einde" && wrongGuessCount<6){setWrongGuessCount(wrongGuessCount + 1);}else{}
       console.log(wrongGuessCount);
     }
   };
@@ -28,18 +28,18 @@ const Game = () => {
   const gameResult = ()  => {
     toplam=0;
     if (wrongGuessCount >= 6) {
-      if (selectedWord[0,0]!=="son"){
+      if (selectedWord[0,0]!=="einde"){
       genelToplam[teller]=0;
       return 'Kaybettin! Doğru kelime: ' + selectedWord[0,0];
-      }else{ return "OYUN BITTI!!!";} 
+      }else{ return "SPEL IS OVER!!!";} 
     } else if (selectedWord[0,0].split('').every((letter) => guessedLetters.includes(letter))) {
-      if (selectedWord[0,0]!=="son"){
+      if (selectedWord[0,0]!=="einde"){
       toplam=(cijfer + 7-wrongGuessCount)*10;
       genelToplam[teller]=toplam;
       console.log(genelToplam);
       return 'Kazandın!'  +  toplam;
     }else{ return "OYUN BITTI!!!";}
-    } else if (selectedWord[0,0]==="son"){
+    } else if (selectedWord[0,0]==="einde"){
        return "OYUN BITTI!!!"; setWrongGuessCount(0);
     }
     else {
@@ -51,7 +51,7 @@ const Game = () => {
   // Yeniden başlatma işlevi
   const restartGame=  () => {
     setGuessedLetters([]);
-    setTeller(selectedWord[0,0]==="son"?teller:teller+1)
+    setTeller(selectedWord[0,0]==="einde"?teller:teller+1)
 
   };
 
@@ -89,7 +89,7 @@ useEffect(() => {
   setGameOver(false);
 }, [teller]);
 
-
+//<button onClick={previus}>previus</button>
   return (
     <div className="game">
       <h1>{selectedWord[0,1]}</h1>
@@ -97,7 +97,7 @@ useEffect(() => {
       <Word selectedWord={selectedWord[0,0]} guessedLetters={guessedLetters} wrongGuessCount={wrongGuessCount} />
       <Alphabet guessedLetters={guessedLetters} selectLetter={selectLetter} />
       <div className="result">{gameResult()}</div>
-      <button onClick={previus}>previus</button>
+      
       <button onClick={restartGame}>Next</button>
       <div>GenelPuan : {
         genelToplam.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}</div>
