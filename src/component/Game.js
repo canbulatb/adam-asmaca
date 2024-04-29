@@ -37,10 +37,10 @@ const Game = () => {
       toplam=(cijfer + 7-wrongGuessCount)*10;
       genelToplam[teller]=toplam;
       console.log(genelToplam);
-      return 'Kazandın!'  +  toplam;
-    }else{ return "OYUN BITTI!!!";}
+      return 'Je weet wel!'  +  toplam;
+    }else{ return "SPEL IS OVER!!!";}
     } else if (selectedWord[0,0]==="einde"){
-       return "OYUN BITTI!!!"; setWrongGuessCount(0);
+       return "SPEL IS OVER!!!"; setWrongGuessCount(0);
     }
     else {
       return '' ;
@@ -99,7 +99,7 @@ useEffect(() => {
       <div className="result">{gameResult()}</div>
       
       <button onClick={restartGame}>Next</button>
-      <div>GenelPuan : {
+      <div>Totale score : {
         genelToplam.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}</div>
      </div>
    
